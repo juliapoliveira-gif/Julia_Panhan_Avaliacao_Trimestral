@@ -1,0 +1,87 @@
+﻿{
+    //Escolha do jogador
+    Console.OutputEncoding = System.Text.Encoding.UTF8;
+    Console.WriteLine("Seja bem vindo! Um grande Dragão Vermelho 🐉 despertou e está ameaçando o reino.\n Você foi escolhido pela guilda para enfrentá-lo ou ver se virará churrasco.");
+    Console.WriteLine("Digite o nome do Herói: ");
+    string nome = Console.ReadLine();
+    Console.WriteLine("Digite a classe do herói (Mago, Clérigo, Guerreiro, Duida, Anão, Elfo, Troll): ");
+    string classe = Console.ReadLine();
+    Console.WriteLine("Digite o nível do herói: ");
+    int.TryParse(Console.ReadLine(), out int nivel);
+    Console.WriteLine("Digite os pontos de vida (HP) do herói: ");
+    double.TryParse(Console.ReadLine(), out double hp);
+    Console.WriteLine("Digite os pontos de magia (Mana) do herói: ");
+    int.TryParse(Console.ReadLine(), out int mana);
+    Console.WriteLine("Digite a quantidade de ouro na mochila: ");
+    double.TryParse(Console.ReadLine(), out double ouro);
+
+    //cálculo do poder
+    double poderbase = (nivel * 10) + (hp / 2) - 5;
+
+    //História do jogador
+    //O herói entra se não for Troll e não tiver o nível menor que 5
+    if (classe != "Troll" && nivel >= 5)
+    {
+
+        Console.WriteLine("\nParabéns! Você entrou na guida!🎉");
+        Console.WriteLine("\nSeu poder de combate é: " + poderbase);
+        //regra do dano crítico
+        if (poderbase % 2 == 0)
+        {
+            Console.WriteLine("\n\rVocê ativou se ataque crítico! ✨");
+        }
+
+        bool atacoucomsucesso = false;
+
+        if (classe == "Mago" || classe == "Druida" || classe == "Clérigo")
+        {
+            //O jogador só ataca se a Mana for >= 30 E o nivel for <= 100
+            if (mana >= 30 && nivel <= 100)
+            {
+                Console.WriteLine("\n\rMuito Bem! 🧙‍♂️ Você lançou um feitiço poderoso contra o dragão!");
+                atacoucomsucesso = true;
+
+            }
+            else
+            {  //Se o herói não tiver a mana, o cajado falha!
+                Console.WriteLine("🪵 Mana insuficiente! O cajado falhou.");
+            }
+        }
+
+        else if (classe == "Guerreiro" || classe == "Anão" || classe == "Elfo")
+        {
+            //O hp tem que se > 20 e o poderbase >50
+            if (hp > 20 && poderbase > 50)
+            {
+                Console.WriteLine("\r\n⚔️ Seu ataque físico foi desferido com sucesso!");
+                atacoucomsucesso |= true;
+            }
+            else
+            {
+                Console.WriteLine("\r\n🛡️ Você não tem hp ou poder suficiente para o combate físico.");
+            }
+        }
+
+        if (atacoucomsucesso == false)
+        {
+            Console.WriteLine("⚠️ Você não conseguiu atacar! O dragão se aproxima.. tentando suborno!");
+            //O ouro deve ser > 1000 ou ser classe Anão
+            if (ouro > 1000 || classe == "Anão")
+            {
+                Console.WriteLine("💰 O dragão aceitou seu ouro e te deixou partir. Sorte sua!");
+            }
+            else
+            {
+                Console.WriteLine("🔥 O dragão não aceitou o suborno. Você virou churrasco! 🍖");
+            }
+        }
+    }
+
+    else
+
+    {
+        //Se o jogador for Troll ou tiver o nível menor que 5, o programa pula direto para cá
+        Console.WriteLine("\nVocê não pode entrar na guilda. Fim de jogo!❌");
+
+    }
+}

@@ -1,0 +1,40 @@
+﻿Console.OutputEncoding =  System.Text.Encoding.UTF8;
+Console.WriteLine("\r\nDigite um número inteiro para catalogar os protozoários: " +
+    "\nDigite 1 para catalogar euglenófitas. \nDigite 2 para catalogar clórofitas. \nDigite 3 para catalogar bacilariófitas." +
+    "\nDigite 4 para catalogar rodófitas. \nDigite 5 para catalogar pirrófitas. \nDigite 6 para catalogar amebas." +
+    " \nDigite 7 para catalogar toxoplasma. \nDigite 8 para catalogar filariose. \nDigite 9 para catalogar tripomastigotas. ");
+
+string opcao = Console.ReadLine();
+switch (opcao)
+{
+    case "1":
+        Console.WriteLine("Você catalogou Euglenófitas");
+        break;
+    case "2":
+        Console.WriteLine("Você catalogou Clorófitas");
+        break;
+    case "3":
+        Console.WriteLine("Você catalogou Bacilariófitas");
+        break;
+    case "4":
+        Console.WriteLine("Você catalogou Rodófitas");
+        break;
+    case "5":
+        Console.WriteLine("Você catalogou Pirrófitas");
+        break;
+    case "6":
+        Console.WriteLine("Você catalogou Amebas");
+        break;
+    case "7":
+        Console.WriteLine("Você catalogou Toxoplasma");
+        break;
+    case "8":
+        Console.WriteLine("Você catalogou Filariose");
+        break;
+    case "9":
+        Console.WriteLine("Você catalogou Tripomastigotas");
+        break;
+    default:
+        Console.WriteLine("Opção inválida.");
+        break;
+}
