@@ -1,0 +1,14 @@
+﻿Console.OutputEncoding = System.Text.Encoding.UTF8;
+int t1 = 1, t2 = 1, t3 = 0;
+Console.WriteLine("Digite o Número de Termos: ");
+int.TryParse(Console.ReadLine()!, out int numeroTermo);
+Console.WriteLine($"{t1} ➡️ {t2} ➡️");
+for (int i = 0; i < numeroTermo; i++)
+{
+    t3 = t1 + t2;
+    t1 = t2;
+    t2 = t3;
+    Console.WriteLine($"{t3} ➡️");
+}
+Console.WriteLine("🎯");
+
